@@ -20,5 +20,10 @@ public class StudentController{
     public StudentEntity post(@RequestBody StudentEntity st){
         return ser.saveData(st);
     }
-    @Get
+    @GetMapping("/getAll")
+    public List<StudentEntity> getAll(){
+        return service.getAllStudents();
+    }
+    @GetMapping("/get/{id}")
+    public String
 }
