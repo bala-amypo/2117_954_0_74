@@ -1,31 +1,39 @@
-// package com.example.demo.service.Impl;
+package com.example.demo.service;
 
-// import java.util.*;
-// import org.springframework.stereotype.Service;
-// import com.example.demo.Entity.Student;
+import java.util.List;
+import java.util.Optional;
 
-// @Servicepublic class StudentServiceImpl implements StudentService {
+import org.springframework.stereotype.Service;
 
-//     private final Map<Long, Student> store = new HashMap<>();
-//     private long counter = 1;
+import com.example.demo.entity.Student;
+import com.example.demo.repository.StudentRepository;
 
-//     @Override
-//     public Student insertStudent(Student st) {
-//         st.setId(counter++);
-//         store.put(st.getId(), st);
-//         return st;
-//     }
+@Service
+public class StudentServiceImpl implements StudentService {
 
-//     @Overridepublic List<Student> getAllStudents() {
-//         return new ArrayList<>(store.values());
-//     }
+    private final StudentRepository repo;
 
-//     @Overridepublic Optional<Student> getOneStudent(Long id) {
-//         return Optional.ofNullable(store.get(id));
-//     }
+    public StudentServiceImpl(StudentRepository repo) {
+        this.repo = repo;
+    }
 
-//     @Overridepublic void deleteStudent(Long id) {
-//         store.remove(id);
-//     }
-// }/
-    
+    @Override
+    public Student insertStudent(Student st) {
+        return repo.save(st);
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return repo.findAll();
+    }
+
+    @Override
+    public Optional<Student> getOneStudent(Long id) {
+        return repo.findById(id);
+    }
+
+    @Override
+    public void deleteStudent(Long id) {
+        repo.deleteById(id);
+    }
+}

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -12,28 +12,12 @@ public class Student {
     private Long id;
 
     private String name;
-
-    @Column(unique = true)
     private String email;
-
-    private Double cgpa;
-
+    private double cgpa;
     private LocalDate dob;
 
-    // ✅ No-args constructor (required by JPA)
-    public Student() {
-    }
+    public Student() {}
 
-    // ✅ Parameterized constructor
-    public Student(Long id, String name, String email, Double cgpa, LocalDate dob) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.cgpa = cgpa;
-        this.dob = dob;
-    }
-
-    // ✅ Getters & Setters
     public Long getId() {
         return id;
     }
@@ -58,11 +42,11 @@ public class Student {
         this.email = email;
     }
 
-    public Double getCgpa() {
+    public double getCgpa() {
         return cgpa;
     }
 
-    public void setCgpa(Double cgpa) {
+    public void setCgpa(double cgpa) {
         this.cgpa = cgpa;
     }
 
