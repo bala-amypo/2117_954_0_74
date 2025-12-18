@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 @Entity
 public class UserEntity{
     @ID
+    @EMAIL
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String name;
