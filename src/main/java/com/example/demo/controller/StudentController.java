@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.Entity.Student;
-import com.example.demo.Service.StudentService;
+import com.example.demo.entity.Student;
+import com.example.demo.service.StudentService;
 
 @RestController
 @RequestMapping("/students")
